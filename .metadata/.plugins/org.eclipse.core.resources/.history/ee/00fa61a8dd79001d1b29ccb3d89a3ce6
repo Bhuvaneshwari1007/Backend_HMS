@@ -1,0 +1,44 @@
+package com.guestservice;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.when;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+
+import com.guestservice.exception.GuestNotFoundException;
+import com.guestservice.model.GuestDetails;
+import com.guestservice.repository.GuestDetailsRepository;
+import com.guestservice.service.GuestDetailsService;
+
+@SpringBootTest
+class GuestServiceApplicationTests {
+	
+	@Autowired
+	private GuestDetailsService service;
+	
+	@MockBean
+	private GuestDetailsRepository guestRepository;
+	
+	@Test
+	public void ShowAllGuestTest() throws GuestNotFoundException {
+		List<GuestDetails>guest = new ArrayList<>();
+		GuestDetails g = new GuestDetails();
+	
+		g.setGuestId(1);
+		g.setName("Prawin");
+		g.setContact("7890123763");
+		g.setGender("Male");
+		g.setEmail("prawin@16");
+		g.setAddress("Bose nagar, Chennai");
+		
+		guest.add(g);
+		when(guestRepository.findAll()).thenReturn(guest);
+		assertEquals(1, service.showAllGuestDetails().size());
+	}	
+}

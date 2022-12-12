@@ -1,0 +1,5 @@
+package com.roomservice.repository;
+
+public interface RoomRepository {
+
+}

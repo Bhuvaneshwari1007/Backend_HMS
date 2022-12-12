@@ -1,0 +1,5 @@
+package com.roomservice.service;
+
+public interface RoomService {
+
+}

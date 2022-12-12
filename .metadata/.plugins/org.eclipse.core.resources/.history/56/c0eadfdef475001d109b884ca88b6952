@@ -1,0 +1,5 @@
+package com.receptionist.feignClient;
+
+public interface RoomFeignClient {
+
+}

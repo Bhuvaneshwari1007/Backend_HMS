@@ -1,0 +1,11 @@
+package com.receptionist.model;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection="")
+public class Receptionist {
+	@Id
+	private int 
+
+}

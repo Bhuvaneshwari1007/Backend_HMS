@@ -1,0 +1,48 @@
+package com.roomservice.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.roomservice.model.Room;
+import com.roomservice.repository.RoomRepository;
+@Service
+public class RoomServiceImplementation implements RoomService{
+	
+	@Autowired
+	private RoomRepository roomRepository;
+
+	@Override
+	public List<Room> showAllRooms() {
+		return roomRepository.findAll();
+	}
+
+	@Override
+	public Room showRoomById(int id) {
+		Optional<Room> room = roomRepository.findById(id);
+		Room r = null;
+		if(room.isPresent())
+			r = room.get();
+		return r;
+	}
+
+	@Override
+	public Room addRoomDetails(Room room) {
+		return roomRepository.save(room);
+	}
+
+	@Override
+	public Room updateRoomDetails(Room room) {
+		return roomRepository.save(room);
+	}
+
+	@Override
+	public void deleteRoomDetails(int id) {
+		roomRepository.deleteById(id);
+	}
+}
+
+	
+	

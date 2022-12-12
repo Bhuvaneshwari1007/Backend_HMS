@@ -1,0 +1,5 @@
+package com.guestservice.Controller;
+
+public class GuestAuthService {
+
+}

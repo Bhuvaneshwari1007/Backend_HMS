@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="GuestServiceApplicationTests" project="GuestService" tests="4" started="4" failures="0" errors="0" ignored="0">
+  <testsuite name="com.guestservice.GuestServiceApplicationTests" time="0.102" displayname="GuestServiceApplicationTests" uniqueid="[engine:junit-jupiter]/[class:com.guestservice.GuestServiceApplicationTests]">
+    <testcase name="ShowAllGuestTest" classname="com.guestservice.GuestServiceApplicationTests" time="0.069" displayname="ShowAllGuestTest()" uniqueid="[engine:junit-jupiter]/[class:com.guestservice.GuestServiceApplicationTests]/[method:ShowAllGuestTest()]"/>
+    <testcase name="addGuestTest" classname="com.guestservice.GuestServiceApplicationTests" time="0.014" displayname="addGuestTest()" uniqueid="[engine:junit-jupiter]/[class:com.guestservice.GuestServiceApplicationTests]/[method:addGuestTest()]"/>
+    <testcase name="updateGuestTest" classname="com.guestservice.GuestServiceApplicationTests" time="0.007" displayname="updateGuestTest()" uniqueid="[engine:junit-jupiter]/[class:com.guestservice.GuestServiceApplicationTests]/[method:updateGuestTest()]"/>
+    <testcase name="ShowGuestByIdTest" classname="com.guestservice.GuestServiceApplicationTests" time="0.007" displayname="ShowGuestByIdTest()" uniqueid="[engine:junit-jupiter]/[class:com.guestservice.GuestServiceApplicationTests]/[method:ShowGuestByIdTest()]"/>
+  </testsuite>
+</testrun>

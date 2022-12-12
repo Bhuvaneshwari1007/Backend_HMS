@@ -1,0 +1,26 @@
+package com.receptionist.feignClient;
+
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import com.receptionist.exception.ReservationNotFoundException;
+import com.receptionist.model.Reservation;
+
+@FeignClient(name="Reservation", url="http://localhost:9004/reservation")
+public interface ReservationFeignClient {
+		
+		@PostMapping("/addreservation")
+		public ResponseEntity<Reservation> addreservation(@RequestBody Reservation reservation) throws ReservationNotFoundException;
+
+		@PutMapping("/updatereservation")
+		public ResponseEntity<Reservation> updatereservation(@RequestBody Reservation reservation) throws ReservationNotFoundException;
+		
+		@DeleteMapping("/deletereservation/{id}")
+		public ResponseEntity<String> deletereservation(@PathVariable("id") int id) throws ReservationNotFoundException;
+
+}

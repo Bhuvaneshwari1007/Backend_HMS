@@ -1,0 +1,5 @@
+package com.receptionist.model;
+
+public class Receptionist {
+
+}

@@ -1,0 +1,5 @@
+package com.guestservice.model;
+
+public class ErrorResponse {
+
+}

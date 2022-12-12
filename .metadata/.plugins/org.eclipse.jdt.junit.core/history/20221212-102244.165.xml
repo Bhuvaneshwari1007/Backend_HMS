@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="InventoryServiceApplicationTests" project="InventoryService" tests="5" started="5" failures="0" errors="0" ignored="0">
+  <testsuite name="com.inventory.InventoryServiceApplicationTests" time="0.074" displayname="InventoryServiceApplicationTests" uniqueid="[engine:junit-jupiter]/[class:com.inventory.InventoryServiceApplicationTests]">
+    <testcase name="deleteInventoryTest" classname="com.inventory.InventoryServiceApplicationTests" time="0.031" displayname="deleteInventoryTest()" uniqueid="[engine:junit-jupiter]/[class:com.inventory.InventoryServiceApplicationTests]/[method:deleteInventoryTest()]"/>
+    <testcase name="addInventoryTest" classname="com.inventory.InventoryServiceApplicationTests" time="0.011" displayname="addInventoryTest()" uniqueid="[engine:junit-jupiter]/[class:com.inventory.InventoryServiceApplicationTests]/[method:addInventoryTest()]"/>
+    <testcase name="updateInventoryTest" classname="com.inventory.InventoryServiceApplicationTests" time="0.011" displayname="updateInventoryTest()" uniqueid="[engine:junit-jupiter]/[class:com.inventory.InventoryServiceApplicationTests]/[method:updateInventoryTest()]"/>
+    <testcase name="ShowAllInventoryTest" classname="com.inventory.InventoryServiceApplicationTests" time="0.006" displayname="ShowAllInventoryTest()" uniqueid="[engine:junit-jupiter]/[class:com.inventory.InventoryServiceApplicationTests]/[method:ShowAllInventoryTest()]"/>
+    <testcase name="ShowInventoryByIdTest" classname="com.inventory.InventoryServiceApplicationTests" time="0.008" displayname="ShowInventoryByIdTest()" uniqueid="[engine:junit-jupiter]/[class:com.inventory.InventoryServiceApplicationTests]/[method:ShowInventoryByIdTest()]"/>
+  </testsuite>
+</testrun>

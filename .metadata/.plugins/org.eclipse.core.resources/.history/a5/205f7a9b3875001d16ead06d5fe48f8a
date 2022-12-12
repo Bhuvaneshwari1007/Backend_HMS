@@ -1,0 +1,5 @@
+package com.guestservice.exception;
+
+public class GuestNotFoundException {
+
+}

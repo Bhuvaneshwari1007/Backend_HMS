@@ -1,0 +1,58 @@
+package com.staff;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.when;
+
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+
+import com.staff.exception.StaffNotFoundException;
+import com.staff.model.Staff;
+import com.staff.repository.StaffRepository;
+import com.staff.service.StaffService;
+
+@SpringBootTest
+class StaffServiceApplicationTests {
+	
+	@Autowired
+	private StaffService staffService;
+	
+	@MockBean
+	private StaffRepository staffRepository;
+
+	@Test
+	public void getAllReservationTest() throws StaffNotFoundException {
+
+		when(staffRepository.findAll()).thenReturn(Stream.of(
+				new Staff(05, 114, "Mani", "9876098876", "mani@gmail.com", 30, "Rail Nagar, Guduvanchery", 37000),
+				new Staff(06, 112, "Nandini", "768906546", "nandini@gmail.com", 27, "Tambaram, Chennai", 29000))
+				.collect(Collectors.toList()));
+		assertEquals(2, staffService.showAllStaffDetails().size());
+	}
+	
+	@Test
+	public void addDepartmentTest() throws StaffNotFoundException {
+		Staff staff = new Staff(1, 122, "Aditya", "7890123456", "adi@gmail.com", 25, "Teynampet,Chennai",50000);
+		when(staffRepository.insert(staff)).thenReturn(staff);
+		assertEquals(staff, staffService.addStaff(staff));
+	}
+	
+	@Test
+	public void updateDepartmentTest() throws StaffNotFoundException {
+
+		Staff staff1 = new Staff(9, 144, "Arulmozhi", "9876543210", "arul@gmail.com", 41, "Thanjavur, Tamilnadu",57000);
+		Staff staff2 = new Staff(11, 125, "Amudha", "9123456789", "amudha@gmail.com", 38,"Meenambakkam, Chennai", 65000);
+
+		when(staffRepository.save(staff1)).thenReturn(staff2);
+		assertEquals(staff2, staffService.updateStaff(staff1));
+	}
+
+
+
+
+}

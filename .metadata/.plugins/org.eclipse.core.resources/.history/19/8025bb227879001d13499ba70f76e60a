@@ -1,0 +1,53 @@
+package com.roomservice;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.when;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+
+import com.roomservice.exception.RoomNotFoundException;
+import com.roomservice.model.Room;
+import com.roomservice.repository.RoomRepository;
+import com.roomservice.service.RoomService;
+
+@SpringBootTest
+class RoomServiceApplicationTests {
+	
+	@Autowired
+	private RoomService roomService;
+
+	@MockBean
+	private RoomRepository roomrepository;
+	
+	@Test
+	public void ShowAllRoomTest() {
+		List<Room>room = new ArrayList<>();
+		Room r = new Room();
+		
+		r.setId(1);
+		r.setDepartmentId(122);
+		r.setEmployeeName("Sundari");
+		r.setPhoneNo("9876656570");
+		r.setEmail("krssundari@gmail.com");
+		r.setAge(45);
+		r.setEmployeeAddress("Urapakkam,Chennai");
+		r.setSalary(50000);
+		
+		room.add(s);
+
+		when(roomrepository.findAll()).thenReturn(room);
+		assertEquals(1, service.showAllStaffDetails().size());
+	}
+	
+
+	
+}
+	

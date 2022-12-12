@@ -1,0 +1,33 @@
+package com.guestservice.feignclient;
+
+import java.util.List;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import com.guestservice.exception.GuestNotFoundException;
+import com.guestservice.model.GuestDetails;
+
+public interface GuestAuthClient {
+	
+	@GetMapping("/all")
+	public ResponseEntity<List<GuestDetails>> showAllGuestDetails();
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<GuestDetails> showGuestDetailsById(@PathVariable("id") int id) throws GuestNotFoundException;
+	
+	@PostMapping("/addguest")
+	public ResponseEntity<GuestDetails> addGuestDetails(@RequestBody GuestDetails guestDetails) throws GuestNotFoundException;
+	
+	@PutMapping("/updateguest")
+	public ResponseEntity<GuestDetails> updateCroDetails(@RequestBody GuestDetails guestDetails) throws GuestNotFoundException;
+	
+	@DeleteMapping("/deleteguest/{id}")
+	public ResponseEntity<String> deleteGuestDetails(@PathVariable("id") int id) throws GuestNotFoundException;
+}
