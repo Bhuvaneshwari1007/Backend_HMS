@@ -2,7 +2,6 @@ package com.guestservice.Controller;
 
 import java.time.LocalDateTime;
 
-
 import org.springframework.http.HttpStatus;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -10,6 +9,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.guestservice.exception.GuestNotFoundException;
 import com.guestservice.model.ErrorResponse;
+
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 

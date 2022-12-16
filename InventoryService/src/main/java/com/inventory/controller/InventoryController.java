@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.inventory.exception.InventoryNotFoundException;
 import com.inventory.model.Inventory;
@@ -23,57 +25,97 @@ import com.inventory.service.InventoryServiceImplementation;
 @RestController
 @RequestMapping("/inventory")
 public class InventoryController {
-	
+
 	@Autowired
 	private InventoryServiceImplementation service;
-	
+
+	@Autowired
+	private InventoryAuthenticationService inventoryAuthService;
 
 	Logger log = LoggerFactory.getLogger(InventoryController.class);
-	
+
 	@GetMapping("/all")
-	public ResponseEntity<List<Inventory>> showAllinventoryDetails(){
-             List<Inventory> inventory = service.showAllInventoryDetails();
-             if(inventory.isEmpty()) {
-     			return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
-     		}
-     		log.debug("Inventories are {}",inventory);
-     		return new ResponseEntity<>(inventory, HttpStatus.OK);
+	public ResponseEntity<List<Inventory>> showAllinventoryDetails(@RequestHeader("Authorization") String token) {
+		try {
+			if (inventoryAuthService.isSessionValid(token)) {
+				List<Inventory> inventory = service.showAllInventoryDetails();
+				if (inventory.isEmpty()) {
+					return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+				}
+				log.debug("Inventory are {}", inventory);
+				return new ResponseEntity<>(inventory, HttpStatus.OK);
+			}
+			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are Unauthorized!...");
+		} catch (ResponseStatusException e) {
+			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are Unauthorized!...");
+		}
 	}
-	
+
 	@GetMapping("/{id}")
-	public ResponseEntity<Inventory> showInventoryDetailsById(@PathVariable("id") int id) throws InventoryNotFoundException {
-		Inventory inventoryDetails = service.showInventoryById(id);
-		if(inventoryDetails!=null) {
-			log.debug("Inventory Details: {}",inventoryDetails);
-			return new ResponseEntity<>(inventoryDetails, HttpStatus.OK);}
-		else
-			return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+	public ResponseEntity<Inventory> showInventoryDetailsById(@PathVariable("id") int id,
+			@RequestHeader("Authorization") String token) throws InventoryNotFoundException {
+		try {
+			if (inventoryAuthService.isSessionValid(token)) {
+				Inventory inventoryDetails = service.showInventoryById(id);
+				if (inventoryDetails != null) {
+					log.debug("Inventory Details: {}", inventoryDetails);
+					return new ResponseEntity<>(inventoryDetails, HttpStatus.OK);
+				} else
+					return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+			}
+			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are Unauthorized!...");
+		} catch (ResponseStatusException e) {
+			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are Unauthorized!...");
+		}
 	}
-	
+
 	@PostMapping("/addinventory")
-	public ResponseEntity<Inventory> addInventory(@RequestBody Inventory inventoryDetails) throws InventoryNotFoundException {
-		Inventory inventory = service.addInventory(inventoryDetails);
-		if(inventory!=null) {
-			log.debug("Inventory Details: {}",inventory);
-			return new ResponseEntity<>(inventory, HttpStatus.OK);}
-		else
-			return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+	public ResponseEntity<Inventory> addInventoryDetails(@RequestBody Inventory inventoryDetails,
+			@RequestHeader("Authorization") String token) throws InventoryNotFoundException {
+		try {
+			if (inventoryAuthService.isSessionValid(token)) {
+				Inventory inventory = service.addInventory(inventoryDetails);
+				if (inventory != null) {
+					log.debug("Inventory Details: {}", inventory);
+					return new ResponseEntity<>(inventory, HttpStatus.OK);
+				} else
+					return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+			}
+			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are Unauthorized!...");
+		} catch (ResponseStatusException e) {
+			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are Unauthorized!...");
+		}
 	}
-	
+
 	@PutMapping("/updateinventory")
-	public ResponseEntity<Inventory> updateInventory(@RequestBody Inventory inventoryDetails) throws InventoryNotFoundException {
-		Inventory inventory = service.updateInventory(inventoryDetails);
-		if(inventory!=null) {
-			log.debug("Inventory Details: {}",inventory);
-			return new ResponseEntity<>(inventory, HttpStatus.CREATED);}
-		return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
-	}
-	
-	@DeleteMapping("/deleteinventory/{id}")
-	public ResponseEntity<String> deleteInventory(@PathVariable("id") int id) throws InventoryNotFoundException {
-		service.deleteInventory(id);
-		return new ResponseEntity<>("Deleted Successfully", HttpStatus.OK);
+	public ResponseEntity<Inventory> updateInventoryDetails(@RequestBody Inventory inventoryDetails,
+			@RequestHeader("Authorization") String token) throws InventoryNotFoundException {
+		try {
+			if (inventoryAuthService.isSessionValid(token)) {
+				Inventory inventory = service.updateInventory(inventoryDetails);
+				if (inventory != null) {
+					log.debug("Inventory Details: {}", inventory);
+					return new ResponseEntity<>(inventory, HttpStatus.CREATED);
+				}
+				return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+			}
+			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are Unauthorized!...");
+		} catch (ResponseStatusException e) {
+			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are Unauthorized!...");
+		}
 	}
 
+	@DeleteMapping("/delete/{id}")
+	public ResponseEntity<String> deleteInventoryDetails(@PathVariable("id") int id,
+			@RequestHeader("Authorization") String token) throws InventoryNotFoundException {
+		try {
+			if (inventoryAuthService.isSessionValid(token)) {
+				service.deleteInventory(id);
+				return new ResponseEntity<>("Deleted Successfully", HttpStatus.OK);
+			}
+			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are Unauthorized!...");
+		} catch (ResponseStatusException e) {
+			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are Unauthorized!...");
+		}
+	}
 }
-

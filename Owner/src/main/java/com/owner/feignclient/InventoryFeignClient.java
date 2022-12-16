@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 
 import com.owner.exception.InventoryNotFoundException;
 import com.owner.model.Inventory;
@@ -21,21 +22,21 @@ import com.owner.model.Inventory;
 public interface InventoryFeignClient {
 	
 	@GetMapping("/all")
-	public ResponseEntity<List<Inventory>> showAllInventory();
+	public ResponseEntity<List<Inventory>> showAllInventory(@RequestHeader("Authorization") String token);
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Inventory> showById(@PathVariable("id")int id)throws InventoryNotFoundException;
+	public ResponseEntity<Inventory> showById(@PathVariable("id")int id,@RequestHeader("Authorization") String token)throws InventoryNotFoundException;
 
 	@PostMapping("/addinventory")
-	public ResponseEntity<Inventory> addInventory(@RequestBody Inventory inventoryDetails)
+	public ResponseEntity<Inventory> addInventory(@RequestBody Inventory inventoryDetails,@RequestHeader("Authorization") String token)
 			throws InventoryNotFoundException;
 
 	@PutMapping("/updateinventory")
-	public ResponseEntity<Inventory> updateInventory(@RequestBody Inventory inventoryDetails)
+	public ResponseEntity<Inventory> updateInventory(@RequestBody Inventory inventoryDetails,@RequestHeader("Authorization") String token)
 			throws InventoryNotFoundException;
 
-	@DeleteMapping("/deleteinventory/{id}")
-	public ResponseEntity<String> deleteInventory(@PathVariable("id") int id) throws InventoryNotFoundException;
+	@DeleteMapping("/delete/{id}")
+	public ResponseEntity<String> deleteInventory(@PathVariable("id") int id,@RequestHeader("Authorization") String token) throws InventoryNotFoundException;
 
 }
 

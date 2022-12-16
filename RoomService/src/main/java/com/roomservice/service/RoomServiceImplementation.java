@@ -44,7 +44,7 @@ public class RoomServiceImplementation implements RoomService{
 			log.info("Add Room Method Ended");
 			return roomRepository.insert(room);
 		} else {
-			return rm.orElseThrow(() -> new RoomNotFoundException("Dealer Already Exists"));
+			return rm.orElseThrow(() -> new RoomNotFoundException("Room Already Exists"));
 		}
 	}
 

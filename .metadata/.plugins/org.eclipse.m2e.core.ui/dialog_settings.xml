@@ -6,6 +6,7 @@
 	</section>
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="C:\Users\bs37\Downloads\sts-4.16.1.RELEASE\Hotel-Management-System\PaymentService"/>
 			<item value="C:\Users\bs37\Downloads\sts-4.16.1.RELEASE\Hotel-Management-System\Auth-Service"/>
 			<item value="C:\Users\bs37\Downloads\sts-4.16.1.RELEASE\Hotel-Management-System\ManagerEndUser"/>
 			<item value="C:\Users\bs37\Downloads\sts-4.16.1.RELEASE\Hotel-Management-System\RateService"/>

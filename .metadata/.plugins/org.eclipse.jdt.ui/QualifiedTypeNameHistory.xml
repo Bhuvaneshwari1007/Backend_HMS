@@ -1,28 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="com.paypal.api.payments.PaymentExecution"/>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PostMapping"/>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.ModelAttribute"/>
-    <fullyQualifiedTypeName name="com.paypal.api.payments.Payment"/>
-    <fullyQualifiedTypeName name="com.paypal.api.payments.Links"/>
-    <fullyQualifiedTypeName name="com.paypal.base.rest.PayPalRESTException"/>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestParam"/>
-    <fullyQualifiedTypeName name="com.reservation.service.ReservationService"/>
-    <fullyQualifiedTypeName name="com.reservation.repository.ReservationRepository"/>
-    <fullyQualifiedTypeName name="java.text.ParseException"/>
-    <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
-    <fullyQualifiedTypeName name="java.util.Date"/>
-    <fullyQualifiedTypeName name="java.util.stream.Stream"/>
-    <fullyQualifiedTypeName name="com.reservation.model.Reservation"/>
-    <fullyQualifiedTypeName name="java.util.stream.Collectors"/>
-    <fullyQualifiedTypeName name="com.receptionist.feignclient.GuestAuthClient"/>
-    <fullyQualifiedTypeName name="com.receptionist.model.AuthenticationResponse"/>
-    <fullyQualifiedTypeName name="com.receptionist.feignclient.ReservationAuthenticationClient"/>
     <fullyQualifiedTypeName name="com.receptionist.feignclient.RoomAuthenticationClient"/>
     <fullyQualifiedTypeName name="com.manager.feignclient.InventoryAuthenticationClient"/>
     <fullyQualifiedTypeName name="com.manager.model.AuthenticationResponse"/>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestHeader"/>
     <fullyQualifiedTypeName name="org.springframework.web.server.ResponseStatusException"/>
     <fullyQualifiedTypeName name="org.springframework.http.HttpStatus"/>
     <fullyQualifiedTypeName name="com.manager.feignclient.RoomAuthenticationClient"/>
@@ -50,7 +30,6 @@
     <fullyQualifiedTypeName name="com.owner.model.Staff"/>
     <fullyQualifiedTypeName name="com.owner.exception.StaffNotFoundException"/>
     <fullyQualifiedTypeName name="org.springframework.boot.test.context.SpringBootTest"/>
-    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
     <fullyQualifiedTypeName name="com.staff.service.StaffServiceImplementation"/>
     <fullyQualifiedTypeName name="org.springframework.boot.test.mock.mockito.MockBean"/>
     <fullyQualifiedTypeName name="com.staff.repository.StaffRepository"/>
@@ -60,4 +39,25 @@
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="com.staff.exception.StaffNotFoundException"/>
     <fullyQualifiedTypeName name="java.util.Optional"/>
+    <fullyQualifiedTypeName name="com.inventory.repository.InventoryRepository"/>
+    <fullyQualifiedTypeName name="com.inventory.service.InventoryService"/>
+    <fullyQualifiedTypeName name="com.inventory.exception.InventoryNotFoundException"/>
+    <fullyQualifiedTypeName name="com.inventory.model.Inventory"/>
+    <fullyQualifiedTypeName name="com.guestservice.GuestServiceApplication"/>
+    <fullyQualifiedTypeName name="com.guestservice.service.GuestDetailsService"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+    <fullyQualifiedTypeName name="com.guestservice.exception.GuestNotFoundException"/>
+    <fullyQualifiedTypeName name="com.guestservice.model.GuestDetails"/>
+    <fullyQualifiedTypeName name="com.guestservice.feignclient.GuestAuthenticationClient"/>
+    <fullyQualifiedTypeName name="com.guestservice.model.AuthenticationResponse"/>
+    <fullyQualifiedTypeName name="com.inventory.feignclient.InventoryAuthenticationClient"/>
+    <fullyQualifiedTypeName name="com.inventory.model.AuthenticationResponse"/>
+    <fullyQualifiedTypeName name="com.reservation.feignclient.ReservationAuthenticationClient"/>
+    <fullyQualifiedTypeName name="com.reservation.model.AuthenticationResponse"/>
+    <fullyQualifiedTypeName name="com.roomservice.feignclient.RoomAuthenticationClient"/>
+    <fullyQualifiedTypeName name="com.roomservice.model.AuthenticationResponse"/>
+    <fullyQualifiedTypeName name="com.staff.feignclient.StaffAuthenticationClient"/>
+    <fullyQualifiedTypeName name="com.staff.model.AuthenticationResponse"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestHeader"/>
+    <fullyQualifiedTypeName name="springfox.documentation.swagger2.annotations.EnableSwagger2"/>
 </qualifiedTypeNameHistroy>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move element &apos;StaffAuthenticationService.java&apos; to &apos;StaffService/src/main/java/com.staff.service&apos;&#x0D;&#x0A;- Original project: &apos;StaffService&apos;&#x0D;&#x0A;- Destination element: &apos;StaffService/src/main/java/com.staff.service&apos;&#x0D;&#x0A;- Original element: &apos;com.staff.controller.StaffAuthenticationService.java&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move compilation unit" destination="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.staff.service" element1="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.staff.controller{StaffAuthenticationService.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" patterns="*" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1670936297982" units="1" version="1.0"/>
+</session>

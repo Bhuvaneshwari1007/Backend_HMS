@@ -9,7 +9,7 @@ public class GuestDetails {
 	@Id
 	private int guestId;
 	private String name;
-	private long contact;
+	private String contact;
 	private char gender;
 	private String email;
 	private String address;
@@ -18,7 +18,7 @@ public class GuestDetails {
 		super();
 	}
 
-	public GuestDetails(int guestId, String name, long contact, char gender, String email, String address) {
+	public GuestDetails(int guestId, String name, String contact, char gender, String email, String address) {
 		super();
 		this.guestId = guestId;
 		this.name = name;
@@ -44,11 +44,11 @@ public class GuestDetails {
 		this.name = name;
 	}
 
-	public long getContact() {
+	public String getContact() {
 		return contact;
 	}
 
-	public void setContact(long contact) {
+	public void setContact(String contact) {
 		this.contact = contact;
 	}
 

@@ -2,9 +2,7 @@ package com.owner.controller;
 
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,81 +13,44 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.server.ResponseStatusException;
-
 import com.owner.exception.InventoryNotFoundException;
 import com.owner.feignclient.InventoryFeignClient;
 import com.owner.model.Inventory;
-
-
 
 @RestController
 @RequestMapping("owner/inventory")
 public class InventoryOwnerController {
 	@Autowired
 	private InventoryFeignClient inventoryClient;
-	
-	@Autowired
-	private InventoryAuthenticationService inventoryAuthService;
-	
+
 	@GetMapping("/all")
-	public ResponseEntity<List<Inventory>> showAllInventory(@RequestHeader("Authorization") String token){
-		try {
-			if (inventoryAuthService.isSessionValid(token)) {
-     		return inventoryClient.showAllInventory();
+	public ResponseEntity<List<Inventory>> showAllInventory(@RequestHeader("Authorization") String token) {
+		return inventoryClient.showAllInventory(token);
 	}
-			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are Unauthorized!...");
-		} catch (Exception e) {
-			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are Unauthorized!...");
-		}
-		}
+
 	@GetMapping("/{id}")
-	public ResponseEntity<Inventory> showInventoryById(@PathVariable("id") int id,@RequestHeader("Authorization") String token) 
-			throws InventoryNotFoundException {
-		try {
-			if (inventoryAuthService.isSessionValid(token)) {
-			return inventoryClient.showById(id);
+	public ResponseEntity<Inventory> showInventoryById(@PathVariable("id") int id,@RequestHeader("Authorization") String token) throws InventoryNotFoundException {
+		return inventoryClient.showById(id, token);
 	}
-			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are Unauthorized!...");
-		} catch (Exception e) {
-			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are Unauthorized!...");
-		}
-		}
+
 	@PostMapping("/addinventory")
 	public ResponseEntity<Inventory> addInventory(@RequestBody Inventory inventoryDetails,@RequestHeader("Authorization") String token)
 			throws InventoryNotFoundException {
-		try {
-			if (inventoryAuthService.isSessionValid(token)) {
-		return inventoryClient.addInventory(inventoryDetails);
+
+		return inventoryClient.addInventory(inventoryDetails, token);
 	}
-		throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are Unauthorized!...");
-	} catch (Exception e) {
-		throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are Unauthorized!...");
-	}
-	}
+
 	@PutMapping("/updateinventory")
-	public ResponseEntity<Inventory> updateInventory(@RequestBody Inventory inventoryDetails,@RequestHeader("Authorization") String token) 
-			throws InventoryNotFoundException{
-		try {
-			if (inventoryAuthService.isSessionValid(token)) {
-		return inventoryClient.updateInventory(inventoryDetails);
+	public ResponseEntity<Inventory> updateInventory(@RequestBody Inventory inventoryDetails,@RequestHeader("Authorization") String token)
+			throws InventoryNotFoundException {
+
+		return inventoryClient.updateInventory(inventoryDetails, token);
 	}
-		throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are Unauthorized!...");
-	} catch (Exception e) {
-		throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are Unauthorized!...");
-	}
-	}
+
 	@DeleteMapping("/delete/{id}")
-	public ResponseEntity<String> deleteInventory(@PathVariable("id") int id,@RequestHeader("Authorization") String token) 
-			throws InventoryNotFoundException{
-		try {
-			if (inventoryAuthService.isSessionValid(token)) {
-		return inventoryClient.deleteInventory(id);
-		}
-		throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are Unauthorized!...");
-	} catch (Exception e) {
-		throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are Unauthorized!...");
-	}
+	public ResponseEntity<String> deleteInventory(@PathVariable("id") int id,@RequestHeader("Authorization") String token) throws InventoryNotFoundException {
+
+		return inventoryClient.deleteInventory(id, token);
 	}
 
 }

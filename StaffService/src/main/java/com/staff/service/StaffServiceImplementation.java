@@ -12,17 +12,14 @@ import com.staff.exception.StaffNotFoundException;
 import com.staff.model.Staff;
 import com.staff.repository.StaffRepository;
 
-
-
-
 @Service
 public class StaffServiceImplementation implements StaffService {
 
 	@Autowired
 	private StaffRepository staffRepository;
-	
+
 	Logger log = LoggerFactory.getLogger(StaffServiceImplementation.class);
-	
+
 	@Override
 	public List<Staff> showAllStaffDetails() {
 		log.info("Show All Staff Details Method Started");
@@ -35,12 +32,13 @@ public class StaffServiceImplementation implements StaffService {
 	@Override
 	public Staff showStaffById(int id) throws StaffNotFoundException {
 		log.info("Show Staff By Id Method Started");
-		return staffRepository.findById(id).orElseThrow(() -> new StaffNotFoundException("Staff with the id " + id + " Doesn't Exists"));
-		
+		return staffRepository.findById(id)
+				.orElseThrow(() -> new StaffNotFoundException("Staff with the id " + id + " Doesn't Exists"));
+
 	}
 
 	@Override
-	public Staff addStaff(Staff staff) throws StaffNotFoundException{
+	public Staff addStaff(Staff staff) throws StaffNotFoundException {
 		log.info("Add StaffDetails Method Started");
 		Optional<Staff> s = staffRepository.findById(staff.getId());
 		if (!s.isPresent()) {
@@ -52,19 +50,19 @@ public class StaffServiceImplementation implements StaffService {
 
 	}
 
-
 	@Override
-	public Staff updateStaff(Staff staff)throws StaffNotFoundException {
+	public Staff updateStaff(Staff staff) throws StaffNotFoundException {
 		log.info("Update Staff Method Started");
 		Optional<Staff> s = staffRepository.findById(staff.getId());
 		if (!s.isPresent())
-			return s.orElseThrow(() -> new StaffNotFoundException("Staff with the id " + staff.getId() + " Doesn't Exists"));
+			return s.orElseThrow(
+					() -> new StaffNotFoundException("Staff with the id " + staff.getId() + " Doesn't Exists"));
 		log.info("Update Staff Method Ended");
 		return staffRepository.save(staff);
 	}
 
 	@Override
-	public String deleteStaff(int id)throws StaffNotFoundException {
+	public String deleteStaff(int id) throws StaffNotFoundException {
 		log.info("Delete Staff Method Started");
 		Optional<Staff> staff = staffRepository.findById(id);
 		if (!staff.isPresent()) {

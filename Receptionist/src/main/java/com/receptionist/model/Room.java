@@ -8,13 +8,13 @@ public class Room {
 	@Id
 	private int roomNumber;
 	private boolean roomStatus;
-	private Long totalRooms;
+	private int totalRooms;
 	
 	public Room() {
 		super();
 	}
 
-	public Room(int roomNumber, boolean roomStatus, Long totalRooms) {
+	public Room(int roomNumber, boolean roomStatus, int totalRooms) {
 		super();
 		this.roomNumber = roomNumber;
 		this.roomStatus = roomStatus;
@@ -37,11 +37,11 @@ public class Room {
 		this.roomStatus = roomStatus;
 	}
 
-	public Long getTotalRooms() {
+	public int getTotalRooms() {
 		return totalRooms;
 	}
 
-	public void setTotalRooms(Long totalRooms) {
+	public void setTotalRooms(int totalRooms) {
 		this.totalRooms = totalRooms;
 	}
 

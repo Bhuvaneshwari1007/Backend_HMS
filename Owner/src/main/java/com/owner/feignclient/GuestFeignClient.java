@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 
 import com.owner.exception.GuestNotFoundException;
 import com.owner.model.GuestDetails;
@@ -21,18 +22,18 @@ import com.owner.model.GuestDetails;
 public interface GuestFeignClient {
 	
 	@GetMapping("/all")
-	public ResponseEntity<List<GuestDetails>> showAllGuest();
+	public ResponseEntity<List<GuestDetails>> showAllGuest(@RequestHeader("Authorization") String token);
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<GuestDetails> showById(@PathVariable("id")int id)throws GuestNotFoundException;
+	public ResponseEntity<GuestDetails> showById(@PathVariable("id")int id,@RequestHeader("Authorization") String token)throws GuestNotFoundException;
 	
 	@PostMapping("/addguest")
-	public ResponseEntity<GuestDetails> addGuest(@RequestBody GuestDetails guestDetails) throws GuestNotFoundException;
+	public ResponseEntity<GuestDetails> addGuest(@RequestBody GuestDetails guestDetails,@RequestHeader("Authorization") String token) throws GuestNotFoundException;
 
 	@PutMapping("/updateguest")
-	public ResponseEntity<GuestDetails> updateGuest(@RequestBody GuestDetails guestDetails) throws GuestNotFoundException;
+	public ResponseEntity<GuestDetails> updateGuest(@RequestBody GuestDetails guestDetails,@RequestHeader("Authorization") String token) throws GuestNotFoundException;
 	
 	@DeleteMapping("/deleteguest/{id}")
-	public ResponseEntity<String> deleteGuest(@PathVariable("id") int id) throws GuestNotFoundException;
+	public ResponseEntity<String> deleteGuest(@PathVariable("id") int id,@RequestHeader("Authorization") String token) throws GuestNotFoundException;
 
 }
