@@ -8,17 +8,15 @@ public class Room {
 	@Id
 	private int roomNumber;
 	private boolean roomStatus;
-	private int totalRooms;
 	
 	public Room() {
 		super();
 	}
 
-	public Room(int roomNumber, boolean roomStatus, int totalRooms) {
+	public Room(int roomNumber, boolean roomStatus) {
 		super();
 		this.roomNumber = roomNumber;
 		this.roomStatus = roomStatus;
-		this.totalRooms = totalRooms;
 	}
 
 	public int getRoomNumber() {
@@ -37,17 +35,9 @@ public class Room {
 		this.roomStatus = roomStatus;
 	}
 
-	public int getTotalRooms() {
-		return totalRooms;
-	}
-
-	public void setTotalRooms(int totalRooms) {
-		this.totalRooms = totalRooms;
-	}
-
 	@Override
 	public String toString() {
-		return "Room [roomNumber=" + roomNumber + ", roomStatus=" + roomStatus + ", totalRooms=" + totalRooms + "]";
+		return "Room [roomNumber=" + roomNumber + ", roomStatus=" + roomStatus + "]";
 	}
 
 }

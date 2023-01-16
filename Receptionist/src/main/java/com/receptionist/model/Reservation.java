@@ -14,20 +14,22 @@ public class Reservation {
 	private LocalDate checkIn;
 	private LocalDate checkOut;
 	private int numberOfNights;
+	private String roomType;
 	private String name;
 	private String emailId;
 	private String phoneNumber;
 	private String gender;
 	private String address;
 	private boolean status;
-
+	private double rate;
+	
 	public Reservation() {
 		super();
 	}
 
 	public Reservation(int reservationCode, int numberOfAdult, int numberOfChildren, String checkIn,
-			String checkOut, int numberOfNights, String name, String emailId, String phoneNumber, String gender,
-			String address, boolean status) {
+			String checkOut, int numberOfNights, String roomType, String name, String emailId, String phoneNumber,
+			String gender, String address, boolean status, double rate) {
 		super();
 		this.reservationCode = reservationCode;
 		this.numberOfAdult = numberOfAdult;
@@ -35,12 +37,14 @@ public class Reservation {
 		this.checkIn = LocalDate.parse(checkIn);
 		this.checkOut = LocalDate.parse(checkOut);
 		this.numberOfNights = numberOfNights;
+		this.roomType = roomType;
 		this.name = name;
 		this.emailId = emailId;
 		this.phoneNumber = phoneNumber;
 		this.gender = gender;
 		this.address = address;
 		this.status = status;
+		this.rate = rate;
 	}
 
 	public int getReservationCode() {
@@ -91,6 +95,14 @@ public class Reservation {
 		this.numberOfNights = numberOfNights;
 	}
 
+	public String getRoomType() {
+		return roomType;
+	}
+
+	public void setRoomType(String roomType) {
+		this.roomType = roomType;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -131,7 +143,7 @@ public class Reservation {
 		this.address = address;
 	}
 
-	public boolean getStatus() {
+	public boolean isStatus() {
 		return status;
 	}
 
@@ -139,13 +151,22 @@ public class Reservation {
 		this.status = status;
 	}
 
+	public double getRate() {
+		return rate;
+	}
+
+	public void setRate(double rate) {
+		this.rate = rate;
+	}
+
 	@Override
 	public String toString() {
 		return "Reservation [reservationCode=" + reservationCode + ", numberOfAdult=" + numberOfAdult
 				+ ", numberOfChildren=" + numberOfChildren + ", checkIn=" + checkIn + ", checkOut=" + checkOut
-				+ ", numberOfNights=" + numberOfNights + ", name=" + name + ", emailId=" + emailId + ", phoneNumber="
-				+ phoneNumber + ", gender=" + gender + ", address=" + address + ", status ="
-				+ status + "]";
+				+ ", numberOfNights=" + numberOfNights + ", roomType=" + roomType + ", name=" + name + ", emailId="
+				+ emailId + ", phoneNumber=" + phoneNumber + ", gender=" + gender + ", address=" + address + ", status="
+				+ status + ", rate=" + rate + "]";
 	}
-
+	
 }
+

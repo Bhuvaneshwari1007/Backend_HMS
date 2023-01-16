@@ -1,7 +1,0 @@
-server.port=9007
-spring.application.name=receptionist
-spring.main.allow-bean-definition-overriding=true
-
-#logger Config
-logging.level.org.springframework=info 
-logging.level.com.inventory=debug 

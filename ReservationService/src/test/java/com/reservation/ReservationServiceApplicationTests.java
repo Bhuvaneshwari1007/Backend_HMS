@@ -2,6 +2,7 @@ package com.reservation;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
@@ -43,6 +44,8 @@ class ReservationServiceApplicationTests {
 		r.setGender("Male");
 		r.setAddress("Chambers Colony,Chromepet");
 		r.setStatus(true);
+		r.setRate(1500);
+
 	
 		reservation.add(r);
 
@@ -61,12 +64,14 @@ class ReservationServiceApplicationTests {
 		r.setCheckIn("2022-12-01");
 		r.setCheckOut("2022-12-03");
 		r.setNumberOfNights(3);
+		r.setRoomType("Special Suite");
 		r.setName("Murali");
 		r.setEmailId("murali@123");
 		r.setPhoneNumber("8791234569");
 		r.setGender("Male");
 		r.setAddress("Chambers Colony,Chromepet");
 		r.setStatus(true);
+		r.setRate(1500);
 	
 		
 	       Optional<Reservation> room = Optional.of(r);
@@ -86,12 +91,14 @@ class ReservationServiceApplicationTests {
 		r.setCheckIn("2022-12-01");
 		r.setCheckOut("2022-12-03");
 		r.setNumberOfNights(3);
+		r.setRoomType("Special Suite");
 		r.setName("Murali");
 		r.setEmailId("murali@123");
 		r.setPhoneNumber("8791234569");
 		r.setGender("Male");
 		r.setAddress("Chambers Colony,Chromepet");
 		r.setStatus(true);
+		r.setRate(1500);
 	
 		
 		when(reservationRepository.insert(r)).thenReturn(r);
@@ -111,26 +118,30 @@ class ReservationServiceApplicationTests {
 		r1.setCheckIn("2022-12-01");
 		r1.setCheckOut("2022-12-03");
 		r1.setNumberOfNights(3);
+		r1.setRoomType("Special Suite");
 		r1.setName("Murali");
 		r1.setEmailId("murali@123");
 		r1.setPhoneNumber("8791234569");
 		r1.setGender("Male");
 		r1.setAddress("Chambers Colony,Chromepet");
 		r1.setStatus(true);
-	
-
+		r1.setRate(1500);
+		
 		r2.setReservationCode(1);
 		r2.setNumberOfAdult(2);
 		r2.setNumberOfChildren(1);
 		r2.setCheckIn("2022-12-01");
 		r2.setCheckOut("2022-12-03");
 		r2.setNumberOfNights(3);
+		r2.setRoomType("Special Suite");
 		r2.setName("Murali");
 		r2.setEmailId("murali@123");
 		r2.setPhoneNumber("8791234569");
 		r2.setGender("Male");
 		r2.setAddress("Chambers Colony,Chromepet");
 		r2.setStatus(true);
+		r2.setRate(1500);
+
 	
 	       Optional<Reservation> room = Optional.of(r1);
 	       
@@ -150,12 +161,14 @@ class ReservationServiceApplicationTests {
 		r.setCheckIn("2022-12-01");
 		r.setCheckOut("2022-12-03");
 		r.setNumberOfNights(3);
+		r.setRoomType("Special Suite");
 		r.setName("Murali");
 		r.setEmailId("murali@123");
 		r.setPhoneNumber("8791234569");
 		r.setGender("Male");
 		r.setAddress("Chambers Colony,Chromepet");
 		r.setStatus(true);
+		r.setRate(1500);
 		
         Optional<Reservation> room = Optional.of(r);
         when(reservationRepository.findById(1)).thenReturn(room);

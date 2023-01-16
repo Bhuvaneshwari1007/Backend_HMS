@@ -1,5 +1,0 @@
-package com.guestservice.repository;
-
-public interface GuestDetailsRepository {
-
-}

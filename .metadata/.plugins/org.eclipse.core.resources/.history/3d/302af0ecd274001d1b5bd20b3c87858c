@@ -1,5 +1,0 @@
-package com.roomservice.exception;
-
-public class RoomNotFoundException {
-
-}

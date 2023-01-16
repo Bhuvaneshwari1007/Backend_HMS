@@ -23,6 +23,11 @@ public class ReservationReceptionistController {
 
 	@Autowired
 	private ReservationFeignClient reservationClient;
+	
+	@GetMapping("/roomprice/{roomType}")
+	public String getPrice(@PathVariable("roomType") String roomType,@RequestHeader("Authorization") String token) {
+			return reservationClient.getPrice(roomType,token);
+	}
 
 	@GetMapping("/all")
 	public ResponseEntity<List<Reservation>> showAllReservation(@RequestHeader("Authorization") String token) {

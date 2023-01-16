@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.guestservice.exception.GuestNotFoundException;
+import com.guestservice.feignclient.ReservationFeignClient;
 import com.guestservice.model.GuestDetails;
 import com.guestservice.service.GuestDetailsServiceImplementation;
 
@@ -31,9 +32,17 @@ public class GuestDetailsController {
 
 	@Autowired
 	private GuestAuthenticationService authenticationService;
+	
+	@Autowired
+	private ReservationFeignClient reservationClient;
 
 	Logger log = LoggerFactory.getLogger(GuestDetailsController.class);
-
+	
+	@GetMapping("/roomprice/{roomType}")
+	public String getPrice(@PathVariable("roomType") String roomType,@RequestHeader("Authorization") String token) {
+			return reservationClient.getPrice(roomType,token);
+	}
+	
 	@GetMapping("/all")
 	public ResponseEntity<List<GuestDetails>> showAllGuestDetails(@RequestHeader("Authorization") String token) {
 		try               {                                                 
@@ -88,7 +97,7 @@ public class GuestDetailsController {
 	}
 
 	@PutMapping("/updateguest")
-	public ResponseEntity<GuestDetails> updateCroDetails(@RequestBody GuestDetails guestDetails,
+	public ResponseEntity<GuestDetails> updateGuestDetails(@RequestBody GuestDetails guestDetails,
 			@RequestHeader("Authorization") String token) throws GuestNotFoundException {
 		try {
 			if (authenticationService.isSessionValid(token)) {

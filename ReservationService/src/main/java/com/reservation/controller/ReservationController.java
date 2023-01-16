@@ -33,6 +33,18 @@ public class ReservationController {
 
 	Logger log = LoggerFactory.getLogger(ReservationController.class);
 
+	@GetMapping("/roomprice/{roomType}")
+	public String getPrice(@PathVariable("roomType") String roomType,@RequestHeader("Authorization") String token) {
+		if (roomType.equals("singlecot"))
+				return "Single Cot " + 1000.0;
+		else if (roomType.equals("doublecot"))
+			return "Double Cot " + 2000.0;
+		else if (roomType.equals("deluxe"))
+			return "Deluxe " + 4000.0;
+		else
+			return ("Enter a valid room type");
+	}
+	
 	@GetMapping("/all")
 	public ResponseEntity<List<Reservation>> showAllReservationDetails(@RequestHeader("Authorization") String token)
 			throws ReservationNotFoundException {

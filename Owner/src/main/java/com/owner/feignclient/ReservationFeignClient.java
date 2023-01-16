@@ -20,6 +20,9 @@ import com.owner.model.Reservation;
 
 @FeignClient(name = "ReservationService", url = "http://localhost:9004/reservation")
 public interface ReservationFeignClient {
+	
+	@GetMapping("/roomprice/{roomType}")
+	public String getPrice(@PathVariable("roomType") String roomType,@RequestHeader("Authorization") String token);
 
 	@GetMapping("/all")
 	public ResponseEntity<List<Reservation>> showAllReservation(@RequestHeader("Authorization") String token);

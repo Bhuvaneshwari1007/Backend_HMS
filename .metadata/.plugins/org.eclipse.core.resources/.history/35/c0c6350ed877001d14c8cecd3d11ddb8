@@ -1,8 +1,0 @@
-package com.payment;
-
-@Data
-@AllArgsConstructor
-
-public class Order {
-
-}
